@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
-export default function ProductDetails({ route }) {
+export default function ProductDetails({ route, navigation }) {
     const { item } = route.params;
 
     return (
@@ -14,7 +14,9 @@ export default function ProductDetails({ route }) {
                     <View style={styles.header}> 
 
                         <View >
-                            <Image source={require("./assets/Menu.png")}/>
+                            <TouchableOpacity title="Open Drawer" onPress={() => navigation.openDrawer()}>
+                                <Image source={require("./assets/Menu.png")}/>
+                            </TouchableOpacity>
 
                         </View>
 

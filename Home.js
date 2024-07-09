@@ -28,8 +28,9 @@ export default function Home ( { navigation } ){
                 <View style={styles.header}> 
 
                     <View >
-                        <Image source={require("./assets/Menu.png")}/>
-
+                        <TouchableOpacity title="Open Drawer" onPress={() => navigation.openDrawer()}>
+                            <Image source={require("./assets/Menu.png")}/>
+                        </TouchableOpacity>
                     </View>
 
                     <View>

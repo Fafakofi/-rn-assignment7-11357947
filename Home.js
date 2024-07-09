@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View, Image, FlatList , TouchableOpacity } from 'react-native';
-import React, { useContext } from 'react';
+import { StyleSheet, Text, View, Image, FlatList , TouchableOpacity ,  ActivityIndicator} from 'react-native';
+import React, { useContext, useState, useEffect } from 'react';
 import OptionsCard from './OptionsCard';
 import { CartContext } from './CartContext';
 
@@ -7,21 +7,38 @@ import { CartContext } from './CartContext';
 export default function Home ( { navigation } ){
     const { cart, addToCart, removeFromCart } = useContext(CartContext);
 
-    const options = [
-        {id: 1, icon: require('./assets/dress1.png'), type: 'Office Wear', price : '$120' },
-        {id: 2, icon: require('./assets/dress2.png'), type: 'Black',  price : '$150' },
-        {id: 3, icon: require('./assets/dress3.png'), type: 'Church Wear', price : '$130' },
-        {id: 4, icon: require('./assets/dress4.png'), type: 'Lamerie',  price : '$100' },
-        {id: 5, icon: require('./assets/dress5.png'), type: '21WN', price : '$100' },
-        {id: 6, icon: require('./assets/dress6.png'), type: 'Lopo', price : '$100' },
-        {id: 7, icon: require('./assets/dress7.png'), type: '21WN', price : '$100' },
-        {id: 8, icon: require('./assets/dress3.png'), type: 'Lame', price : '$100' },
-    
-    ];
+    const [option, setOptions] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const handleCartNavigation = () => {
         navigation.navigate('Cart');
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await fetch('https://fakestoreapi.com/products'); 
+            const data = await response.json();
+            // console.log('Fetched data:', data); 
+            setOptions(data); 
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          } finally {
+            setLoading(false);
+          }
+        };
+        fetchData();
+             }, []);
+
+    if (loading) {
+    return (
+        <View style={styles.container2}>
+        <ActivityIndicator size="large" color="#0000ff" />
+        </View>
+    );
+    }
+
+
     return (
         <View style={styles.container}>
             <View style={styles.container1}>
@@ -74,7 +91,7 @@ export default function Home ( { navigation } ){
                 </View>
 
                 <FlatList 
-                    data= {options}
+                    data= {option}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item }) => <OptionsCard item={item} addToCart={addToCart} />}
                     keyExtractor={item => item.id.toString()}
@@ -92,6 +109,11 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',
+    },
+    container2: {
+      flex: 1,
+      backgroundColor: '#fff',
+      justifyContent: 'center'
     },
 
     container1: {

@@ -39,19 +39,19 @@ export default function ProductDetails({ route, navigation }) {
                         </View>
 
                     </View>
-
+ 
                     
 
                     <View>
-                        <Image source={item.icon} 
-                        style={styles.image}
-                        resizeMode="cover"/>
+                    <Image  source={{ uri: item.image }}  
+                    style={styles.image} 
+                    resizeMode='cover'/>
                     </View>
 
                     <View style={styles.belowImage}>
                         <View>
                             <Text style={styles.story}>
-                                {item.type}
+                                {item.title}
                             </Text>
                         </View>
 
@@ -61,11 +61,11 @@ export default function ProductDetails({ route, navigation }) {
                     </View>
 
                     <Text style={styles.about}>
-                        Recycle Bounce knit Cardigan Pink
+                       {item.description}
                     </Text>
 
                     <Text style={styles.price}>
-                        {item.price}
+                        ${item.price}
                     </Text>
 
                     <Text style={styles.materials}>

@@ -33,18 +33,18 @@ export default function Cart({ route, navigation }) {
                         <View style={styles.cartItem}>
 
                             <View style={styles.cartImg}> 
-                                <Image source={item.icon} />
+                            <Image  source={{ uri: item.image }}  style={styles.productImage} />
 
                             </View>
 
                             <View>
-                                <Text style={styles.story}>{item.type}</Text>
+                                <Text style={styles.story}>  {item.title} </Text>
 
                                     <Text style={styles.cardigan}>
-                                        Reversable angora cardigan
+                                        {item.category}
                                     </Text>
 
-                                <Text style={styles.price}>{item.price}</Text>
+                                <Text style={styles.price}> ${item.price}</Text>
 
                             </View>
 
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 20,
+        width: '70%'
     },
 
     cardigan: {
@@ -112,8 +113,7 @@ const styles = StyleSheet.create({
      },
 
      delete: {
-        top: 190,
-        right: 20
+        right: 40
      },
 
      cartImg: {
@@ -140,5 +140,11 @@ const styles = StyleSheet.create({
       checkout: {
         fontSize: 20,
         marginLeft: 10
-      }
+      },
+
+      productImage: {
+        width: 100,
+        height: 100,
+        resizeMode: 'contain', 
+    },
 });

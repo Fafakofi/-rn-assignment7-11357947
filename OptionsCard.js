@@ -1,7 +1,9 @@
 import { View , StyleSheet , Text, Image, TouchableOpacity } from "react-native";
+import { CartContext } from './CartContext';
+import { useContext } from 'react';
 
-const OptionsCard = ({ item, addToCart}) => {
-
+const OptionsCard = ({ item}) => {
+    const { addToCart } = useContext(CartContext);
 
     return(
         <View style={styles.optionsView}>

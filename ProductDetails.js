@@ -119,7 +119,7 @@ export default function ProductDetails({ route }) {
 
                             <View >
                                 <Text style={styles.warningText}>
-                                    Iron at a max of 110C/230F
+                                    Iron at a max of 110°C/230°F
                                 </Text>
                             </View>
                         </View>
@@ -135,13 +135,13 @@ export default function ProductDetails({ route }) {
                             </View>
 
                             <View>
-                                <Text>
+                                <Text style={styles.free}>
                                     Free Flat rate Shipping
-                                </Text>
-                                <Text>
+                                </Text >
+                                <Text style={styles.free1}>
                                    estimated to be delivered on
                                 </Text>
-                                <Text>
+                                <Text style={styles.free1}>
                                   09/11/2024 - 09/12/2030
                                 </Text>
                             </View>
@@ -152,6 +152,19 @@ export default function ProductDetails({ route }) {
                             <Image source={require('./assets/Up.png')}/>
                         </View>
 
+                    </View>
+
+                    <View style={styles.footer}>
+                           <View style={styles.add}>
+                             <Image source={require("./assets/Plus.png")} />
+                             <Text style={styles.basket}>
+                                    ADD TO BASKET
+                             </Text>
+                           </View>
+                           
+                           <View>
+                                <Image source={require("./assets/Heart.png")} />
+                           </View>
                     </View>
 
 
@@ -252,7 +265,7 @@ const styles = StyleSheet.create({
      },
 
      line: {
-        width: '70%',
+        width: '80%',
         height: 1,
         backgroundColor: '#D3D3D3',
         marginBottom: 30
@@ -261,7 +274,8 @@ const styles = StyleSheet.create({
      delivery: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom: 250
      },
 
      delivery1: {
@@ -271,7 +285,44 @@ const styles = StyleSheet.create({
 
      car: {
         marginRight: 20
-     }
+     },
+
+     free: {
+        fontWeight: '400',
+        fontSize: 16,
+        marginBottom: 7
+     },
+
+     free1: {
+        fontWeight: '200',
+        fontSize: 16,
+        marginBottom: 7
+     },
+
+     footer: {
+        position: 'relative',
+        bottom: 0,
+        width: '100%',
+        backgroundColor: '#f8f8f8',
+        padding: 20,
+        alignItems: 'center',
+        top: 20,
+        display: "flex",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom:10
+      },
+
+      add: {
+        display: "flex",
+        flexDirection: 'row',
+      },
+
+      basket: {
+        fontSize: 20,
+        marginLeft: 10
+      }
 
 
 });

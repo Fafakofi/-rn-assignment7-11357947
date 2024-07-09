@@ -9,12 +9,12 @@ export default function Home ( { navigation } ){
 
     const options = [
         {id: 1, icon: require('./assets/dress1.png'), type: 'Office Wear', price : '$120' },
-        {id: 2, icon: require('./assets/dress2.png'), type: 'Church Wear',  price : '$150' },
-        {id: 3, icon: require('./assets/dress3.png'), type: '21WN', price : '$130' },
-        {id: 4, icon: require('./assets/dress5.png'), type: '21WN',  price : '$100' },
-        {id: 5, icon: require('./assets/dress5.png'), type: 'Lame', price : '$100' },
-        {id: 6, icon: require('./assets/dress6.png'), type: 'Lame', price : '$100' },
-        {id: 7, icon: require('./assets/dress7.png'), type: 'Lame', price : '$100' },
+        {id: 2, icon: require('./assets/dress2.png'), type: 'Black',  price : '$150' },
+        {id: 3, icon: require('./assets/dress3.png'), type: 'Church Wear', price : '$130' },
+        {id: 4, icon: require('./assets/dress4.png'), type: 'Lamerie',  price : '$100' },
+        {id: 5, icon: require('./assets/dress5.png'), type: '21WN', price : '$100' },
+        {id: 6, icon: require('./assets/dress6.png'), type: 'Lopo', price : '$100' },
+        {id: 7, icon: require('./assets/dress7.png'), type: '21WN', price : '$100' },
         {id: 8, icon: require('./assets/dress3.png'), type: 'Lame', price : '$100' },
     
     ];

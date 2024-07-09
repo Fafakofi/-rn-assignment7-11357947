@@ -5,6 +5,10 @@ import { CartContext } from './CartContext';
 export default function Cart({ route, navigation }) {
     const { cart, removeFromCart } = useContext(CartContext);
 
+    const handleProductPress = (item) => {
+        navigation.navigate('ProductDetails', { item });
+    };
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -25,37 +29,47 @@ export default function Cart({ route, navigation }) {
                 showsVerticalScrollIndicator={false}
                 keyExtractor={item => item.id.toString()}
                 renderItem={({ item }) => (
-                    <View style={styles.cartItem}>
+                    <TouchableOpacity onPress={() => handleProductPress(item)}>
+                        <View style={styles.cartItem}>
 
-                        <View style={styles.cartImg}> 
-                            <Image source={item.icon} />
+                            <View style={styles.cartImg}> 
+                                <Image source={item.icon} />
+
+                            </View>
+
+                            <View>
+                                <Text style={styles.story}>{item.type}</Text>
+
+                                    <Text style={styles.cardigan}>
+                                        Reversable angora cardigan
+                                    </Text>
+
+                                <Text style={styles.price}>{item.price}</Text>
+
+                            </View>
+
+                            <View style={styles.delete}>
+                                <TouchableOpacity  onPress={() => removeFromCart(item.id)}>
+                                    <Image source={require('./assets/remove.png')} />
+                                </TouchableOpacity>
+                            </View>
 
                         </View>
-
-                        <View>
-                            <Text style={styles.story}>{item.type}</Text>
-
-                                <Text style={styles.cardigan}>
-                                    Reversable angora cardigan
-                                </Text>
-
-                            <Text style={styles.price}>{item.price}</Text>
-
-                        </View>
-
-                        <View style={styles.delete}>
-                            <TouchableOpacity  onPress={() => removeFromCart(item.id)}>
-                                <Image source={require('./assets/remove.png')} />
-                            </TouchableOpacity>
-                        </View>
-
-                    </View>
+                    </TouchableOpacity>
                 )}
                
             />
 
                         <View style={styles.footer}>
-                            <Text>Footer Content</Text>
+                           <View>
+                             <Image source={require("./assets/shoppingBag.png")} />
+                           </View>
+                           
+                           <View>
+                                <Text style={styles.checkout}>
+                                    CHECKOUT
+                                </Text>
+                           </View>
                         </View>
         </View>
     );
@@ -111,11 +125,20 @@ const styles = StyleSheet.create({
      },
 
      footer: {
-        position: 'absolute',
+        position: 'relative',
         bottom: 0,
         width: '100%',
         backgroundColor: '#f8f8f8',
         padding: 20,
         alignItems: 'center',
+        top: 20,
+        display: "flex",
+        flexDirection: 'row',
+        justifyContent: 'center'
       },
+
+      checkout: {
+        fontSize: 20,
+        marginLeft: 10
+      }
 });

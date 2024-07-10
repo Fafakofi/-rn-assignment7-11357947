@@ -2,16 +2,20 @@ import { View , StyleSheet , Text, Image, TouchableOpacity } from "react-native"
 import { CartContext } from './CartContext';
 import { useContext } from 'react';
 
-const OptionsCard = ({ item}) => {
+const OptionsCard = ({ item, navigation}) => {
     const { addToCart } = useContext(CartContext);
+
+    const handleProductPress = (item) => {
+        navigation.navigate('ProductDetails', { item });
+    };
 
     return(
         <View style={styles.optionsView}>
 
             <View style={styles.leftOptions}>
-
+            <TouchableOpacity onPress={() => handleProductPress(item)}>
                 <Image  source={{ uri: item.image }}  style={styles.productImage} />
-
+            </TouchableOpacity>
                 <TouchableOpacity onPress={() => addToCart(item)} >
                     <Image source={ require('./assets/add_circle.png')}  style={styles.addButton} 
                      />
@@ -28,7 +32,7 @@ const OptionsCard = ({ item}) => {
                 <Text style={styles.price}>
                     ${item.price}
                 </Text>
-
+               
             </View>
 
             

@@ -93,7 +93,7 @@ export default function Home ( { navigation } ){
                 <FlatList 
                     data= {option}
                     showsVerticalScrollIndicator={false}
-                    renderItem={({ item }) => <OptionsCard item={item} addToCart={addToCart} />}
+                    renderItem={({ item }) => <OptionsCard item={item} addToCart={addToCart} navigation={navigation}/>}
                     keyExtractor={item => item.id.toString()}
                     numColumns={2}
                 />
